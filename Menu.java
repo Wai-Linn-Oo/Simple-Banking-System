@@ -38,7 +38,7 @@ public class Menu {
             case '6' -> exit();
             default -> System.out.println("Out of the service!");
         }
-            recallMenu();
+        recallMenu();
     }
 
     // 1. function of Bank Account

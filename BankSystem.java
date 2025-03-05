@@ -8,23 +8,21 @@ public class BankSystem extends User {
     // Sample Database of bank account
     ArrayList<BankAccount> bankAccounts = new ArrayList<>(Arrays.asList(
             new BankAccount("AYA",
-                    "2",
-                    "Insein",
-                    "Wai Linn Oo",
-                    "1234567890",
-                    "123",
-                    5000,
-                    0),
+                            "2",
+                            "Insein",
+                            "Wai Linn Oo",
+                            "1234567890",
+                            "123",
+                            5000,
+                            0),
             new BankAccount("AYA",
-                    "3",
-                    "Manchester",
-                    "Louis",
-                    "123456789",
-                    "456",
-                    10000,
-                    0)
-    )
-    );
+                            "3",
+                            "Manchester",
+                            "Louis",
+                            "123456789",
+                            "456",
+                            10000,
+                            0)));
 
     // the whole process from here
     public void start() {
@@ -52,14 +50,13 @@ public class BankSystem extends User {
     public BankAccount getUserAccount(char choice) {
         return switch (choice) {
             case '1' -> {
-                System.out.println("Please fill the following credentials");
                 getUserInfo();
                 yield login(userName, userPassword);
             }
             case '2' -> {
-                System.out.println("Please fill the following credentials");
-                getBankInfo(); // get input for bank property
                 getUserInfo();
+                getBankInfo(); // get input for bank property
+
                 int temp = (int) (Math.random() * 123456890); // get random User ID for new bank account
                 userId = Integer.toString(temp);
                 yield createNew(userName, userId, userPassword, bankName, branchNo, branchAddress);
