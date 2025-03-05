@@ -15,7 +15,6 @@ public class User extends Bank {
         boolean isBlank = false;
 
         do {
-            System.out.println("Please fill the following credentials");
 
             System.out.print("Enter the username of account: ");
             userName = scanner.nextLine().toLowerCase();

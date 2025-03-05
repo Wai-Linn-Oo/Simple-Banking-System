@@ -10,9 +10,9 @@ public class Bank{
     // Constants for validation patterns and messages
     final String BANK_NAME_PATTERN = "[a-zA-Z ]+";
     final String BRANCH_NO_PATTERN = "[ 1-9 ]";
-    final String INVALID_BANK_NAME_MESSAGE = "Bank name must contain only alphabetic characters and spaces.";
-    final String INVALID_BRANCH_NO_MESSAGE = "Branch no must contain only number.";
-    final String EMPTY_FIELD_MESSAGE = "This field cannot be blank.";
+    final String INVALID_BANK_NAME_MESSAGE = "Bank name must contain only alphabetic characters.";
+    final String INVALID_BRANCH_NO_MESSAGE = "Branch No must contain only number.";
+    final String EMPTY_FIELD_MESSAGE = "Bank township must contain only alphabetic characters .";
 
     Scanner scanner = new Scanner(System.in);
 

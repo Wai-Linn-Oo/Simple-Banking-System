@@ -17,7 +17,7 @@ public class Menu {
     public void displayMenu() {
 
         System.out.println("==================================");
-        System.out.println("Please select the following option");
+        System.out.println("Please choice the following service ");
         System.out.println();
         System.out.println("1-Account Balance");
         System.out.println("2-Deposit");
@@ -30,31 +30,15 @@ public class Menu {
         char choice = scanner.next().charAt(0);
 
         switch (choice) {
-            case '1':
-                getBalance();
-                break;
-            case '2':
-                getDeposit();
-                break;
-            case '3':
-                withdrawal();
-                break;
-            case '4':
-                previousTransaction();
-                break;
-            case '5':
-                displayAccInfo(bankAccount);
-                break;
-            case '6':
-                exit();
-                break;
-            default:
-                System.out.println("Out of the service!");
+            case '1' -> getBalance();
+            case '2' -> getDeposit();
+            case '3' -> withdrawal();
+            case '4' -> previousTransaction();
+            case '5' -> displayAccInfo(bankAccount);
+            case '6' -> exit();
+            default -> System.out.println("Out of the service!");
         }
-        if (choice != '6') {
             recallMenu();
-        }
-
     }
 
     // 1. function of Bank Account
@@ -124,6 +108,7 @@ public class Menu {
     // 6. function of Bank Account
     public void exit() {
         System.out.println("Thank you for using our banking system");
+        System.exit(0);
     } // method close tag
 
     // recall Menu based on user input after menu function
