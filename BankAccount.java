@@ -1,25 +1,35 @@
+import java.util.ArrayList;
+
 public class BankAccount extends Bank{
     // bank account property
     protected String accountName;
-    protected String accountId;
+    protected String accountNumber;
     protected String accountPassword;
+    protected String address;
+    protected String accountType;
     protected double accountBalance;
-    protected double transaction;
+    ArrayList<Transaction> transactions;
 
     // Constructor of BankAccount
-    public BankAccount(String bankName,String branchNo,String branchAddress,String accountName, String accountId, String accountPassword, double accountBalance, double transaction) {
-        this.bankName = bankName;
+     BankAccount( String accountNumber, String accountName, String accountPassword, String address, double accountBalance,String branchNo,String branchAddress) {
+        this.accountType = "Saving";
+        this.accountNumber = accountNumber;
+        this.accountName =  accountName;
+        this.accountPassword = accountPassword;
+        this.address = address;
+        this.accountBalance = accountBalance;
+        bankName = "JAVA BANK";
         this.branchNo = branchNo;
         this.branchAddress = branchAddress;
-        this.accountName =  accountName;
-        this.accountId = accountId;
-        this.accountPassword = accountPassword;
-        this.accountBalance = accountBalance;
-        this.transaction = transaction;
+        this.transactions = new ArrayList<>();
     }
 
-    // Validating User Input to ArrayList
-    public boolean validateCredentials(String userName, String userPassword) {
+    // Validating UserInfo to BankAccounts ArrayLIst
+    boolean validateCredentials(String userName, String userPassword) {
         return accountName.equalsIgnoreCase(userName) && accountPassword.equalsIgnoreCase(userPassword);
     }
 } // class close tag
+
+
+
+

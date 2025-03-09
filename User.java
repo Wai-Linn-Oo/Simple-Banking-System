@@ -1,17 +1,15 @@
 import java.util.Scanner;
 
-public class User extends Bank {
+public class User {
     Scanner scanner = new Scanner(System.in);
-
-    // User property
-    protected String userName;
-    protected String userId;
-    protected String userPassword;
-    protected double userBalance;
-    protected double transaction;
+    String userName;
+    String userPassword;
+    String userAddress;
+    double userBalance;
 
     // Input user information
     public void getUserInfo() {
+
         boolean isBlank = false;
 
         do {
@@ -29,8 +27,6 @@ public class User extends Bank {
                 System.out.println("Fields cannot be blank!");
             }
         } while (!isBlank);
-
-
     }//  method close tag
 }// class close tag
 

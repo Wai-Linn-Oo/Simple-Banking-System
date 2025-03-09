@@ -1,30 +1,34 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class BankSystem extends User {
+public class BankSystem extends Bank {
     BankAccount userAccount;
+    User user;
     char choice;
+
+    // Constructor of BankSystem
+    public BankSystem() {
+        this.user = new User();
+    }
 
     // Sample Database of bank account
     ArrayList<BankAccount> bankAccounts = new ArrayList<>(Arrays.asList(
-            new BankAccount("AYA",
-                            "2",
-                            "Insein",
-                            "Wai Linn Oo",
-                            "1234567890",
-                            "123",
-                            5000,
-                            0),
-            new BankAccount("AYA",
-                            "3",
-                            "Manchester",
-                            "Louis",
-                            "123456789",
-                            "456",
-                            10000,
-                            0)));
+            new BankAccount("1234567890",
+                    "Wai Linn Oo",
+                    "123",
+                    "Insein",
+                    1000,
+                    "2",
+                    "YANGON"),
+            new BankAccount("9876543210",
+                    "Louis Linn",
+                    "456",
+                    "Manchester",
+                    5000,
+                    "5",
+                    "England")));
 
-    // the whole process from here
+    // Bank System start for here
     public void start() {
 
         do {
@@ -42,25 +46,16 @@ public class BankSystem extends User {
 
         } while (userAccount == null);
 
+        //  Show menu if user input meets credentials
         Menu menu = new Menu(userAccount);
         menu.displayMenu();
     } // method close tag
 
     // let user choose login or create new
-    public BankAccount getUserAccount(char choice) {
+     BankAccount getUserAccount(char choice) {
         return switch (choice) {
-            case '1' -> {
-                getUserInfo();
-                yield login(userName, userPassword);
-            }
-            case '2' -> {
-                getUserInfo();
-                getBankInfo(); // get input for bank property
-
-                int temp = (int) (Math.random() * 123456890); // get random User ID for new bank account
-                userId = Integer.toString(temp);
-                yield createNew(userName, userId, userPassword, bankName, branchNo, branchAddress);
-            }
+            case '1' -> login();
+            case '2' -> createNew();
             default -> {
                 System.out.println("Out of service!");
                 yield null;
@@ -68,10 +63,12 @@ public class BankSystem extends User {
         };
     }// method close tag
 
-    // if user chooses login account
-    public BankAccount login(String userName, String userPassword) {
+    // option 1 : account login
+     BankAccount login() {
+        user.getUserInfo();
+
         for (BankAccount bankAccount : bankAccounts) {
-            if (bankAccount.validateCredentials(userName, userPassword)) {
+            if (bankAccount.validateCredentials(user.userName, user.userPassword)) {
                 System.out.println("Login successfully");
                 return bankAccount;
             }
@@ -81,10 +78,21 @@ public class BankSystem extends User {
         return null;
     } // method close tag
 
-    // if user choose create new account
-    public BankAccount createNew(String userName, String userId, String userPassword, String bankName, String branchNo, String branchAddress) {
-        BankAccount bankAccount = new BankAccount(bankName, branchNo, branchAddress, userName, userId, userPassword, userBalance, transaction);
+    // option 2 : create new account
+    BankAccount createNew() {
+        user.getUserInfo();
+
+        System.out.print("Enter the address of user: ");
+        user.userAddress = scanner.nextLine(); // get user address
+
+        getBankInfo(); // Bank would fill the information in REAL WORLD
+
+        int temp = (int) (Math.random() * 123456890); // get random account number for new bank account
+        String accountNumber = Integer.toString(temp);
+
+        BankAccount bankAccount = new BankAccount(accountNumber, user.userName, user.userPassword, user.userAddress, user.userBalance, branchNo, branchAddress);
         bankAccounts.add(bankAccount);
+
         System.out.println("Bank Account was created successfully ");
 
         return bankAccount;

@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Bank{
+    Scanner scanner = new Scanner(System.in);
     // bank property
     protected String bankName;
     protected String branchNo;
@@ -10,18 +11,13 @@ public class Bank{
     // Constants for validation patterns and messages
     final String BANK_NAME_PATTERN = "[a-zA-Z ]+";
     final String BRANCH_NO_PATTERN = "[ 1-9 ]";
-    final String INVALID_BANK_NAME_MESSAGE = "Bank name must contain only alphabetic characters.";
     final String INVALID_BRANCH_NO_MESSAGE = "Branch No must contain only number.";
-    final String EMPTY_FIELD_MESSAGE = "Bank township must contain only alphabetic characters .";
-
-    Scanner scanner = new Scanner(System.in);
+    final String EMPTY_FIELD_MESSAGE = "Bank Address must contain only alphabetic characters .";
 
     // Request bank info from user ( I knew it unlike real world )
     public void getBankInfo(){
-
-        this.bankName = getValidInput(scanner, "Enter the bank name: ", BANK_NAME_PATTERN, INVALID_BANK_NAME_MESSAGE);
         this.branchNo = getOnlyNumInput(scanner, "Enter the branch no: ",BRANCH_NO_PATTERN, INVALID_BRANCH_NO_MESSAGE);
-        this.branchAddress = getValidInput(scanner, "Enter the branch township: ", BANK_NAME_PATTERN, EMPTY_FIELD_MESSAGE);
+        this.branchAddress = getValidInput(scanner, "Enter the branch address: ", BANK_NAME_PATTERN, EMPTY_FIELD_MESSAGE);
 
     } // method close tag
     /**
