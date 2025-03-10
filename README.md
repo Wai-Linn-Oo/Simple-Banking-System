@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is a basic banking system implemented in Java. It allows users to create accounts, login account, check account balances, deposit and withdraw funds, check transaction and check account information. It serves as a simple demonstration of object-oriented programming principles and basic banking operations.
+This project is a basic banking system implemented in Java. It allows users to create accounts, login account, check account balances, deposit and withdraw funds, check transaction, print Models.Bank Statement and check account information. It serves as a simple demonstration of object-oriented programming principles and basic banking operations.
 ## Features
 
 - **Account Creation**: Allows users to create new bank accounts.
@@ -10,11 +10,9 @@ This project is a basic banking system implemented in Java. It allows users to c
 - **Balance Inquiry**: Users can check their current account balance.
 - **Deposit**: Enables users to deposit funds into their accounts.
 - **Withdrawal**: Allows users to withdraw funds from their accounts.
-- **Transaction History**: Keeps a record of deposits and withdrawals
-- **Check User Info**: Users can view their account details, including personal information and account status.
-
-
-
+- **Models.Transaction History**: Keeps a record of deposits and withdrawals.
+- **Print Models.Bank Statement**: Print a record of transactions and export pdf file of bank statement.
+- **Check Account Info**: Users can View their account details, including personal information and account status.
 
 ## Installation
 
@@ -39,7 +37,7 @@ To run this banking system, you need to have Java Development Kit (JDK) installe
 ## Usage
 
 To run the banking system:
-Follow the on-screen instructions to create accounts, deposit, withdraw, check balances, and view user information.
+Follow the on-screen instructions to create accounts, deposit, withdraw, check balances, and View user information.
 
 ### Example
 

@@ -1,3 +1,10 @@
+package View;
+
+import Models.Bank;
+import Models.BankAccount;
+import Models.User;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -6,7 +13,7 @@ public class BankSystem extends Bank {
     User user;
     char choice;
 
-    // Constructor of BankSystem
+    // Constructor of view.BankSystem
     public BankSystem() {
         this.user = new User();
     }
@@ -52,7 +59,7 @@ public class BankSystem extends Bank {
     } // method close tag
 
     // let user choose login or create new
-     BankAccount getUserAccount(char choice) {
+    BankAccount getUserAccount(char choice) {
         return switch (choice) {
             case '1' -> login();
             case '2' -> createNew();
@@ -64,12 +71,13 @@ public class BankSystem extends Bank {
     }// method close tag
 
     // option 1 : account login
-     BankAccount login() {
-        user.getUserInfo();
+    BankAccount login() {
+        user.setUserInfo(scanner);
 
         for (BankAccount bankAccount : bankAccounts) {
-            if (bankAccount.validateCredentials(user.userName, user.userPassword)) {
+            if (bankAccount.validateCredentials(user.getUserName(), user.getUserPassword())) {
                 System.out.println("Login successfully");
+                Toolkit.getDefaultToolkit().beep();
                 return bankAccount;
             }
         }
@@ -80,20 +88,19 @@ public class BankSystem extends Bank {
 
     // option 2 : create new account
     BankAccount createNew() {
-        user.getUserInfo();
-
-        System.out.print("Enter the address of user: ");
-        user.userAddress = scanner.nextLine(); // get user address
+        user.setUserInfo(scanner);
+        user.setUserAddress(scanner);
 
         getBankInfo(); // Bank would fill the information in REAL WORLD
 
         int temp = (int) (Math.random() * 123456890); // get random account number for new bank account
         String accountNumber = Integer.toString(temp);
 
-        BankAccount bankAccount = new BankAccount(accountNumber, user.userName, user.userPassword, user.userAddress, user.userBalance, branchNo, branchAddress);
+        BankAccount bankAccount = new BankAccount(accountNumber, user.getUserName(), user.getUserPassword(), user.getUserAddress(), user.getUserBalance(), branchNo, branchAddress);
         bankAccounts.add(bankAccount);
 
         System.out.println("Bank Account was created successfully ");
+        Toolkit.getDefaultToolkit().beep();
 
         return bankAccount;
     } // method close tag

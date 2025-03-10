@@ -1,3 +1,5 @@
+package Models;
+
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.*;
@@ -8,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-class BankStatementGenerator {
+public class BankStatementGenerator {
 
     public static void generateStatement(String customerName, String accountNumber,
                                          String accountType, double currentBalance,
@@ -74,6 +76,8 @@ class BankStatementGenerator {
 
         // Close the document
         document.close();
+
+
 
         // open Bank Statement file automatically if file exits
         File pdfFile = new File("BankStatement.pdf");
